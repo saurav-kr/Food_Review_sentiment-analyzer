@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+import os
 from sklearn.pipeline import Pipeline
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -16,7 +17,15 @@ st.title("Machine Learning Model")
 st.subheader("SENTIMENT ANALYSIS OF REVIEW")
 dframe = user_input()
 st.write(dframe)
+os.environ['KAGGLE_USERNAME'] = "saurav1513" # username from the json file
+os.environ['KAGGLE_KEY'] = "77eea88da83f753a9f3bcb0e8e92ac9e" # key from the json file
+!kaggle datasets download -d snap/amazon-fine-food-reviews # api copied from kaggle
+from zipfile import ZipFile
 
+file_name = "/content/amazon-fine-food-reviews.zip"
+
+with ZipFile(file_name, 'r') as zip:
+  zip.extractall()
 df=pd.read_csv('Reviews.csv')
 df['Sentiment']= np.where(df['Score']>3,'Positive','Negative')
 df = df.drop(['ProductId','UserId','ProfileName','Id','HelpfulnessNumerator','HelpfulnessDenominator','Score','Time','Summary'], axis=1)
