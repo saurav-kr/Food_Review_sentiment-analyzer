@@ -18,13 +18,12 @@ dframe = user_input()
 st.write(dframe)
 
 df=pd.read_csv('Reviews.csv')
-st.write(df.head())
-#df['Sentiment']= np.where(df[' Score']>3,'Positive','Negative')
+df['Sentiment']= np.where(df[' Score']>3,'Positive','Negative')
 df = df.drop(['ProductId','UserId','ProfileName','Id','HelpfulnessNumerator','HelpfulnessDenominator','Score','Time','Summary'], axis=1)
 
 x=df.iloc[:,0].values
 y=df.iloc[:,1].values
-text_model = Pipeline([('tfidf',TfidfVectorizer(min_df = 5, ngram_range = (1,3))),('model',LogisticRegression())])
+text_model = Pipeline([('tfidf',TfidfVectorizer(min_df = 5, ngram_range = (1,2))),('model',LogisticRegression())])
 text_model.fit(x,y)
 y_pred = text_model.predict(dframe)
 ypred= {'Sentiment':y_pred}
