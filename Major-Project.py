@@ -19,7 +19,7 @@ dframe = user_input()
 st.write(dframe)
 os.environ['KAGGLE_USERNAME'] = "saurav1513" # username from the json file
 os.environ['KAGGLE_KEY'] = "77eea88da83f753a9f3bcb0e8e92ac9e" # key from the json file
-!kaggle datasets download -d snap/amazon-fine-food-reviews # api copied from kaggle
+kaggle datasets download -d snap/amazon-fine-food-reviews # api copied from kaggle
 from zipfile import ZipFile
 
 file_name = "/content/amazon-fine-food-reviews.zip"
