@@ -17,7 +17,7 @@ st.subheader("SENTIMENT ANALYSIS OF REVIEW")
 dframe = user_input()
 st.write(dframe)
 
-df=pd.read_csv('/content/drive/My Drive/Project/Reviews.csv')
+df=pd.read_csv('Reviews.csv')
 df['Sentiment']= np.where(df['Score']>3,'Positive','Negative')
 df = df.drop(['ProductId','UserId','ProfileName','Id','HelpfulnessNumerator','HelpfulnessDenominator','Score','Time','Summary'], axis=1)
 
