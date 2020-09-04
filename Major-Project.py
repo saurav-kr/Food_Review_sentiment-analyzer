@@ -25,5 +25,5 @@ y=df.iloc[:,1].values
 text_model=Pipeline([('tfidf',TfidfVectorizer(min_df = 5, ngram_range = (1,3))),('model',LogisticRegression())])
 text_model.fit(x,y)
 y_pred = text_model.predict(dframe)
-ypred= {'Sentiment':y_pred}
+ypred={'Sentiment':y_pred}
 st.write(y_pred)
