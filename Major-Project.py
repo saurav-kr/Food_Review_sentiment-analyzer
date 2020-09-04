@@ -18,7 +18,7 @@ dframe = user_input()
 st.write(dframe)
 
 df=pd.read_csv('Reviews.csv')
-df['Sentiment']= np.where(df['Score']>3,'Positive','Negative')
+df['Sentiment']= np.where(df['Score ']>3,'Positive','Negative')
 df = df.drop(['ProductId','UserId','ProfileName','Id','HelpfulnessNumerator','HelpfulnessDenominator','Score','Time','Summary'], axis=1)
 x=df.iloc[:,0].values
 y=df.iloc[:,1].values
